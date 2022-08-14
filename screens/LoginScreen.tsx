@@ -7,25 +7,31 @@ import { useAppDispatch } from "../store/hooks";
 import { setAuth } from "../store/slices/authSlice";
 import { RootTabScreenProps } from "../types";
 
-export default function TabOneScreen({
+export default function LoginScreen({
   navigation,
-}: RootTabScreenProps<"TabOne">) {
+}: RootTabScreenProps<"Login">) {
   const dispatch = useAppDispatch();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Login Screen</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
       <Button
-        onPress={async () => dispatch(setAuth(false))}
-        title="Logout"
+        onPress={() => navigation.navigate("Register")}
+        title="RegisterNow"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
       />
+      <Button
+        onPress={async () => dispatch(setAuth(true))}
+        title="Login Dummy User"
+        color="#841584"
+        accessibilityLabel="Learn more about this purple button"
+      />
+      <EditScreenInfo path="/screens/LoginScreen.tsx" />
     </View>
   );
 }
